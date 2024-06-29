@@ -1,14 +1,15 @@
 def filter_by_state(transaction_data: list[dict], state: str = "EXECUTED") -> list[dict]:
     """Возвращает отфильтрованный список словарей по ключу"""
-    filter_tratransaction_data = []
-    for tratransaction in transaction_data:
-        if tratransaction["state"] == state:
-            filter_tratransaction_data.append(tratransaction)
-    return filter_tratransaction_data
+    filter_transaction_data = []
+    for transaction in transaction_data:
+        if transaction["state"] == state:
+            filter_transaction_data.append(transaction)
+    return filter_transaction_data
 
 
-def sort_by_date(transaction_data: list[dict], revers: bool = True) -> list[dict]:
-    sort_transaction_data = sorted(transaction_data, key=lambda date: date["date"], reverse=revers)
+def sort_by_date(transaction_data: list[dict], ascending: bool = True) -> list[dict]:
+    """ Возвращает отсортированный список словарей по дате """
+    sort_transaction_data = sorted(transaction_data, key=lambda date: date["date"], reverse=ascending)
     return sort_transaction_data
 
 
