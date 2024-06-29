@@ -1,6 +1,6 @@
 def get_mask_card_number(card_number: str) -> str:
     """Возвращает маску карты"""
-    mask_card = f"{card_number[:4]} {card_number[5:7]}** **** {card_number[12:]}"
+    mask_card = f"{card_number[:4]} {card_number[4:6]}** **** {card_number[12:]}"
     return mask_card
 
 
