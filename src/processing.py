@@ -8,7 +8,7 @@ def filter_by_state(transaction_data: list[dict], state: str = "EXECUTED") -> li
 
 
 def sort_by_date(transaction_data: list[dict], ascending: bool = True) -> list[dict]:
-    """ Возвращает отсортированный список словарей по дате """
+    """Возвращает отсортированный список словарей по дате"""
     sort_transaction_data = sorted(transaction_data, key=lambda date: date["date"], reverse=ascending)
     return sort_transaction_data
 
