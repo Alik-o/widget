@@ -9,6 +9,13 @@ def filter_by_currency(list_transactions: list, transfer_currency: str) -> Gener
         yield transaction
 
 
+def transaction_descriptions(list_transactions: list) -> Generator:
+    """Возвращает описание каждой операции"""
+    for transaction in list_transactions:
+        description = transaction["description"]
+        yield description
+
+
 if __name__ == "__main__":
     transactions = [
         {
