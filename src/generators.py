@@ -16,6 +16,16 @@ def transaction_descriptions(list_transactions: list) -> Generator:
         yield description
 
 
+def card_number_generator(start: int, stop: int) -> Generator:
+    """Возвращает номер карты из заданного диапазона"""
+    card_range = range(start, stop + 1)
+    for card in card_range:
+        number_card = str(card)
+        while len(number_card) != 16:
+            number_card = "0" + number_card
+        yield f"{number_card[0:4]} {number_card[4:8]} {number_card[8:12]} {number_card[12:]}"
+
+
 if __name__ == "__main__":
     transactions = [
         {
@@ -69,9 +79,9 @@ usd_transactions = filter_by_currency(transactions, "USD")
 for _ in range(2):
     print(next(usd_transactions))
 
-"""descriptions = transaction_descriptions(transactions)
+descriptions = transaction_descriptions(transactions)
 for _ in range(5):
     print(next(descriptions))
 
-for card_number in card_number_generator(1, 5):
-    print(card_number)"""
+for card_number in card_number_generator(1111111111110000, 1111111111110005):
+    print(card_number)
