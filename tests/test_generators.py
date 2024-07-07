@@ -1,5 +1,6 @@
-from src.generators import filter_by_currency
 import pytest
+
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 def test_filter_by_currency(transactions):
@@ -32,3 +33,13 @@ def test_filter_by_currency_no_transfer_currency(transactions):
 def test_filter_by_currency_no_list(no_data):
     with pytest.raises(StopIteration):
         next(filter_by_currency(no_data, "USD"))
+
+
+def test_transaction_descriptions(transactions):
+    function_calling = transaction_descriptions(transactions)
+    assert next(function_calling) == "Перевод организации"
+    assert next(function_calling) == "Перевод со счета на счет"
+
+def test_transaction_descriptions_no_list(no_data):
+    with pytest.raises(StopIteration):
+        next(transaction_descriptions(no_data))
