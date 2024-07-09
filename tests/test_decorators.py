@@ -1,5 +1,6 @@
 from src.decorators import log
 
+
 def test_log_():
     @log()
     def add_numbers(a, b):
@@ -24,6 +25,6 @@ def test_log_error(capsys):
     def division_numbers(a, b):
         return a / b
 
-    division_numbers(5,0)
+    division_numbers(5, 0)
     captured = capsys.readouterr()
     assert captured.out == "division_numbers error: division by zero. Inputs: (5, 0) {}\n\n"
