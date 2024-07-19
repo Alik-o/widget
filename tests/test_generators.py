@@ -65,4 +65,3 @@ def test_card_number_generator():
 def test_card_number_generator_limit_numbers():
     with pytest.raises(ValueError):
         next(card_number_generator(10_000_000_000_000_000, 10_000_000_000_000_002))
-
