@@ -22,13 +22,3 @@ def get_amount_transaction_rubles(transactions: dict) -> float:
         date = transactions["date"][:10]
         amount = get_currency_conversion(currency, amount, date)
     return amount
-
-
-# if __name__ == "__main__":
-#     print(get_financial_transaction_data(r"../data/operations.json"))
-
-
-if __name__ == "__main__":
-    transactions = get_financial_transaction_data(r"../data/operations.json")
-    print(transactions[2])
-    print(get_amount_transaction_rubles(transactions[2]))
