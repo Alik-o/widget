@@ -1,16 +1,18 @@
 import json
 import logging
+import os
 from typing import Any
 
 import pandas as pd
 
+from config import ROOT_DIR
 from src.external_api import get_currency_conversion
 
 logger_transaction_data = logging.getLogger("transaction_data")
 logger_amount_transaction = logging.getLogger("amount_transaction")
 logger_transaction_data.setLevel(logging.DEBUG)
 logger_amount_transaction.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler("./logs/utils.log", "w", encoding="utf-8")
+file_handler = logging.FileHandler(os.path.join(ROOT_DIR, "logs", "utils.log"), "w", encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger_amount_transaction.addHandler(file_handler)
@@ -26,10 +28,14 @@ def get_financial_transaction_data(path_to: str) -> Any:
                 data = json.load(f)
             logger_transaction_data.info("json файл распакован удачно")
         elif path_to.endswith(".xlsx"):
-            data = pd.read_excel(path_to)
+            data_xlsx = pd.read_excel(path_to)
+            data_xlsx = data_xlsx.loc[data_xlsx.description.notnull()]
+            data = data_xlsx.to_dict(orient="records")
             logger_transaction_data.info("xlsx файл распакован удачно")
         elif path_to.endswith(".csv"):
-            data = pd.read_csv(path_to)
+            data_csv = pd.read_csv(path_to, delimiter=";")
+            data_csv = data_csv.loc[data_csv.description.notnull()]
+            data = data_csv.to_dict(orient="records")
             logger_transaction_data.info("csv файл распакован удачно")
         else:
             logger_transaction_data.info("Неподдерживаемый тип файла")
