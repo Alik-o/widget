@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 
 def get_currency_conversion(currency: str, amount: float, date: str) -> float:
+    """Возвращает сумму в рублях"""
     load_dotenv()
     API_KEY = os.getenv("API_KEY")
     headers = {"apikey": API_KEY}
