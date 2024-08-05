@@ -89,11 +89,9 @@ while True:
             print(f'{mask_account_card(transaction["to"])}')
         if user_input_currency == "да":
             if user_input_file == "1":
-                print(
-                    f'Сумма: {get_amount_transaction_rubles(transaction)}руб.\n'
-                )
+                print(f"Сумма: {get_amount_transaction_rubles(transaction)}руб.\n")
             else:
-                print(f'Сумма: {get_amount_transaction_rubles(transaction)}руб.\n')
+                print(f"Сумма: {get_amount_transaction_rubles(transaction)}руб.\n")
         else:
             if user_input_file == "1":
                 print(
