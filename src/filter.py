@@ -20,21 +20,3 @@ def filter_by_category(transactions_list: list, category_list: list) -> dict:
         if category in category_list:
             category_dict[category] = category_counter[category]
     return category_dict
-
-
-# if __name__ == '__main__':
-#     import os
-#     from config import DATA_DIR
-#     from src.utils import get_financial_transaction_data
-#
-#     s = get_financial_transaction_data(os.path.join(DATA_DIR, 'transactions.csv'))
-#     p = search_by_description(s, 'открытие')
-#     print(p)
-#     for transaction in p:
-#         print(f"{transaction['date']} {transaction['description']}")
-#         if transaction["from"]:
-#             print(f'{transaction["from"]} -> {transaction["to"]}')
-#         else:
-#             print(f'{transaction["to"]}')
-#
-#
