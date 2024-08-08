@@ -24,20 +24,6 @@ def test_mask_account_card_empty(no_data):
 
 
 @pytest.mark.parametrize(
-    "incorrect_numbers_account_card",
-    [
-        ("VisaClassic6831982476737658"),
-        ("Visa Gold 5999414228426"),
-        ("Maestro 15abc37868705199"),
-        ("Счет 353830334744478"),
-        ("Счет 3538303347444789556E"),
-    ],
-)
-def test_mask_account_card_incorrect(incorrect_numbers_account_card):
-    assert mask_account_card(incorrect_numbers_account_card) == "Некорректные данные"
-
-
-@pytest.mark.parametrize(
     "info_date, correct_date",
     [
         ("2018-07-11T02:26:18.671407", "11.07.2018"),

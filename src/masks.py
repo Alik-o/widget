@@ -1,9 +1,11 @@
 import logging
+import os
+from config import LOG_DIR
 
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s - %(name)s - %(levelname)s = %(message)s",
-    filename=r"..\logs\masks.log",
+    filename=os.path.join(LOG_DIR, "masks.log"),
     encoding="utf-8",
     filemode="w",
 )
